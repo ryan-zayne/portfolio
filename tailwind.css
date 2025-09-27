@@ -1,0 +1,175 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "@zayne-labs/ui-react/css/preset.css";
+
+/* ------------------*/
+/* Main Theme        */
+/*-------------------*/
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@theme {
+	--breakpoint-*: initial;
+	--breakpoint-sm: 480px;
+	--breakpoint-md: 780px;
+	--breakpoint-lg: 1000px;
+	--breakpoint-xl: 1280px;
+	--breakpoint-2xl: 1400px;
+}
+
+/* ------------------*/
+/* Fonts            */
+/*-------------------*/
+@theme inline {
+	--font-sans: "Inter Variable", sans-serif;
+	--font-heading: "Bricolage Grotesque Variable", sans-serif;
+}
+
+/* ------------------*/
+/* Shadcn Theme      */
+/*-------------------*/
+@theme {
+	--color-shadcn-background: hsl(0, 0%, 100%);
+	--color-shadcn-foreground: hsl(222.2, 47.4%, 11.2%);
+
+	--color-shadcn-card: hsl(0, 0%, 100%);
+	--color-shadcn-card-foreground: hsl(222.2, 84%, 4.9%);
+
+	--color-shadcn-primary: hsl(222.2, 47.4%, 11.2%);
+	--color-shadcn-primary-foreground: hsl(210, 40%, 98%);
+
+	--color-shadcn-secondary: hsl(210, 40%, 96.1%);
+	--color-shadcn-secondary-foreground: hsl(222.2, 47.4%, 11.2%);
+
+	--color-shadcn-popover: hsl(0, 0%, 100%);
+	--color-shadcn-popover-foreground: hsl(222.2, 47.4%, 11.2%);
+
+	--color-shadcn-accent: hsl(210, 40%, 96.1%);
+	--color-shadcn-accent-foreground: hsl(222.2, 47.4%, 11.2%);
+
+	--color-shadcn-muted: hsl(210, 40%, 96.1%);
+	--color-shadcn-muted-foreground: hsl(215.4, 16.3%, 46.9%);
+
+	--color-shadcn-input: hsl(214.3, 31.8%, 91.4%);
+	--color-shadcn-border: hsl(214.3, 31.8%, 91.4%);
+	--color-shadcn-ring: hsl(215, 20.2%, 65.1%);
+
+	--color-shadcn-destructive: hsl(0 100% 50%);
+	--color-shadcn-destructive-foreground: hsl(210 40% 98%);
+
+	--animate-accordion-down: accordion-down 0.2s ease-out;
+	--animate-accordion-up: accordion-up 0.2s ease-out;
+
+	@keyframes accordion-down {
+		from {
+			height: 0;
+		}
+		to {
+			height: var(--radix-accordion-content-height);
+		}
+	}
+	@keyframes accordion-up {
+		from {
+			height: var(--radix-accordion-content-height);
+		}
+		to {
+			height: 0;
+		}
+	}
+}
+
+/* ------------------*/
+/* Custom Properties */
+/*-------------------*/
+@layer base {
+	[data-theme="dark"] {
+		--color-shadcn-background: hsl(222.2, 84%, 4.9%);
+		--color-shadcn-foreground: hsl(210, 40%, 98%);
+
+		--color-shadcn-card: hsl(222.2, 84%, 4.9%);
+		--color-shadcn-card-foreground: hsl(210, 40%, 98%);
+
+		--color-shadcn-popover: hsl(222.2, 84%, 4.9%);
+		--color-shadcn-popover-foreground: hsl(210, 40%, 98%);
+
+		--color-shadcn-primary: hsl(210, 40%, 98%);
+		--color-shadcn-primary-foreground: hsl(222.2, 47.4%, 11.2%);
+
+		--color-shadcn-secondary: hsl(217.2, 32.6%, 17.5%);
+		--color-shadcn-secondary-foreground: hsl(210, 40%, 98%);
+
+		--color-shadcn-muted: hsl(217.2, 32.6%, 17.5%);
+		--color-shadcn-muted-foreground: hsl(215, 20.2%, 65.1%);
+
+		--color-shadcn-accent: hsl(217.2, 32.6%, 17.5%);
+		--color-shadcn-accent-foreground: hsl(210, 40%, 98%);
+
+		--color-shadcn-destructive: hsl(0, 62.8%, 30.6%);
+		--color-shadcn-destructive-foreground: hsl(210, 40%, 98%);
+
+		--color-shadcn-border: hsl(217.2, 32.6%, 17.5%);
+		--color-shadcn-input: hsl(217.2, 32.6%, 17.5%);
+		--color-shadcn-ring: hsl(212.7, 26.8%, 83.9%);
+	}
+}
+
+/* ------------------*/
+/* General CSS Reset */
+/*-------------------*/
+@layer base {
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	html {
+		height: 100%;
+	}
+
+	body {
+		min-height: 100%;
+	}
+
+	html {
+		scroll-behavior: smooth;
+		-webkit-tap-highlight-color: transparent;
+		font-synthesis: none;
+		text-rendering: optimizeLegibility;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	input:focus-visible {
+		outline: 2px solid transparent;
+		outline-offset: 2px;
+	}
+
+	img {
+		width: 100%;
+		max-inline-size: 100%;
+		max-width: unset;
+	}
+
+	button {
+		outline: transparent;
+	}
+
+	button:not(:disabled) {
+		cursor: pointer;
+	}
+
+	body {
+		line-height: 1.5;
+		background-color: var(--color-shadcn-background);
+		color: var(--color-shadcn-foreground);
+		font-family: var(--font-sans);
+	}
+}
+
+@utility m-itbey {
+	@apply inline-flex items-center gap-1 align-bottom;
+}
+
+@utility wip {
+	@apply absolute top-0 left-4 rounded-sm bg-red-600 p-1 text-[0.6rem] leading-none font-black;
+}

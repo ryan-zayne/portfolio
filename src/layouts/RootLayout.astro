@@ -1,0 +1,64 @@
+---
+import { siteConfig } from "@/config/site";
+import { ThemeProvider } from "@/components/islands/theme-provider";
+import "../styles/fonts.css";
+import "../../tailwind.css";
+
+type Props = {
+	title: string;
+};
+
+const { title } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<link
+			rel="preload"
+			href="https://cdn.jsdelivr.net/fontsource/fonts/bricolage-grotesque:vf@latest/latin-wght-normal.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
+
+		<link
+			rel="preload"
+			href="https://cdn.jsdelivr.net/fontsource/fonts/inter:vf@latest/latin-wght-normal.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
+		<title>{title}</title>
+		<meta name="description" content={siteConfig.description} />
+		<meta
+			name="keywords"
+			content="Olabode, Babblebey, Olabode Lawal-Shittabey, Bode, Lawal-Shittabey, Shittabey, Lawal"
+		/>
+		<meta name="author" content="babblebey" />
+		<meta name="theme-color" content="white" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="black" media="(prefers-color-scheme: dark)" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:url" content={siteConfig.url} />
+		<meta property="og:title" content={siteConfig.title} />
+		<meta property="og:description" content={siteConfig.description} />
+		<meta property="og:site_name" content={siteConfig.title} />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={siteConfig.title} />
+		<meta name="twitter:description" content={siteConfig.description} />
+		<meta name="twitter:image" content={`${siteConfig.url}/og.jpg`} />
+		<meta name="twitter:creator" content="@babblebey" />
+	</head>
+
+	<body>
+		<ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem client:load>
+			<slot />
+		</ThemeProvider>
+	</body>
+</html>

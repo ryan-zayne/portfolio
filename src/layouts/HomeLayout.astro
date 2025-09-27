@@ -1,0 +1,16 @@
+---
+import { MainNav } from "@/components/islands/main-nav";
+import { Footer } from "@/components/islands/footer";
+import { navConfig } from "@/config/nav";
+import { siteConfig } from "@/config/site";
+---
+
+<div class="flex min-h-screen flex-col items-center">
+	<div class="max-w-6xl">
+		<MainNav items={navConfig.items} client:load />
+		<main class="px-4 sm:px-8">
+			<slot />
+		</main>
+		<Footer {...siteConfig} client:load />
+	</div>
+</div>
