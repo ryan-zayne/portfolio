@@ -1,7 +1,6 @@
-import { configWithTailwind } from "@zayne-labs/prettier-config";
+import { zayne } from "@zayne-labs/prettier-config";
 
-const config = {
-	...configWithTailwind,
-};
-
-export default config;
+export default zayne({
+	astro: true,
+	tailwind: true,
+});
